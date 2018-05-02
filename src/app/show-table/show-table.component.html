@@ -1,0 +1,52 @@
+
+<html>
+<head>
+ 
+</head>
+<body>
+
+<div class="container">
+  <h2 >Show Record</h2>
+             
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+          <th>Id No.</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Action</th>          
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of result;let i = index" id="{{i}}">
+          <td><input type="text" class="noedit" value="{{post.id}}"></td>
+          <td><input type="text" class="noedit" value="{{post.fname}}"></td>
+          <td><input type="text" class="noedit" value="{{post.lname}}"></td>
+          <td><input type="text" class="noedit" value="{{post.contact}}"></td>
+          <td><input type="text" class="noedit" value="{{post.email}}"></td>
+          <td><input type="text" class="noedit" value="{{post.pwd}}"></td>
+          <td>
+            <span *ngIf="!editing">
+              <span style="color:green; cursor:pointer" title="Add Record" class="glyphicon glyphicon-plus"></span> &nbsp;&nbsp;    	
+              <button (click)="edit(post.id,i)">
+                <span style="color:blue; cursor:pointer" title="Edit Record" class="glyphicon glyphicon-pencil"></span>
+              </button>  &nbsp;&nbsp;
+              <span style="color:red; cursor:pointer" title="Delete Record" class="glyphicon glyphicon-trash" (click)="deleteCustomer(post)"  ></span> &nbsp;&nbsp; 
+              <span style="color:red; cursor:pointer" title="View Record" class="glyphicon glyphicon-eye-open" (click)="deleteCustomer(post)"  ></span>
+            </span>
+            <span *ngIf="editing && i == indexx">
+                <button type="submit">Update</button>  &nbsp;&nbsp;
+                <button (click)="GoBack(post.id,i)">Cancel</button>
+            </span>
+          </td>
+      </tr>
+              
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
