@@ -1,0 +1,9 @@
+<$php
+	$data=json_decode(get_file_contents("input://php"));
+	$con=mysql_connect("localhost:4200","root","") or die(mysql_error());
+	$db=mysql_select_db("demo") or die(mysql_error());
+	$str=INSERT INTO registration(fname,lname,contact,email,pwd,rpwd) VALUES('$data->fname','$data->lname','$data->contact','$data->email','$data->pwd',
+	'$data->rpwd');
+	$result=mysql_query($str);
+	echo "true";
+?>
